@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-4">
+      <h1>Student List</h1>
+  </div>
+
+  <div class="col-md-4">
+     <input type="text" class="form-control" placeholder="Search student" ng-model="search">
+  </div>
+  <div class="col-md-4">
+     <span class="alert alert-success" role="alert" ng-show="msg">{{msg}}</span>
+  </div>
+</div>
+
+
+
+<table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Student Name</th>
+            <th scope="col">Department</th>
+            <th scope="col">Email</th>
+            <th scope="col">College</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="(key,student) in data | filter:search">
+                <td>{{key+1}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.department}}</td>
+                <td>{{student.email}}</td>
+                <td>{{student.college}}</td>
+                <td>
+                  <button class="btn btn-danger" ng-click="deleteStudent(student)">Delete</button>
+                  <a class="btn btn-success" href="#/students/{{student.$id}}">Edit</a>
+                </td>
+            </tr>
+        </tbody>
+      </table>
